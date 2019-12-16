@@ -5,5 +5,5 @@
   {{#if prop.comment~}}
   {{{trimLeft (indent (comment (trim prop.comment)))}}}
   {{/if~}}
-  ${{kebabcase prop.name}} = {{#ifObject prop.value}}{{{json prop.value}}}{{else}}{{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}}{{/ifObject}}
+  ${{kebabcase prop.name}} = {{#ifObject prop.value}}{{{json prop.value}}}{{else}}{{#ifObjectable prop.value}}{{{jsonize prop.value}}}{{else}}{{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}}{{/ifObjectable}}{{/ifObject}}
 {{/each}}
